@@ -24,6 +24,18 @@ function App() {
         }
     }, [setDarkMode]);
 
+    useEffect(() => {
+        let metaThemeColor = document.querySelector("meta[name=\"theme-color\"]");
+        if (!metaThemeColor) {
+            metaThemeColor = document.createElement("meta");
+            metaThemeColor.setAttribute("name", "theme-color");
+            document.head.appendChild(metaThemeColor);
+        }
+
+        const color = theme.color.backgroundContainer;
+        metaThemeColor.setAttribute("content", color);
+    }, [isDarkMode]);
+
     return (
         <ThemeProvider theme={ theme }>
             <GlobalStyle />
@@ -35,6 +47,8 @@ function App() {
                 style={{
                     flex: 1,
                     padding: theme.padding.medium,
+                    backgroundColor: theme.color.background,
+                    color: theme.color.onBackground,
                 }}
             >
                 <Content isDarkMode={ isDarkMode }/>

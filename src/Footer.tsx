@@ -21,8 +21,8 @@ function Footer() {
                     color: theme.color.onBackgroundContainerDim,
                 }}
             >
-                <p>jtaeyeon05.github.io</p>
-                <p>&copy; jtaeyeon05 | 2026 | email@xodus.lol</p>
+                <p>&copy; 2026 jtaeyeon05</p>
+                <p>Contact: email@xodus.lol</p>
             </div>
             <div style={{ flex: 1, minWidth: theme.padding.medium, }}/>
             <img

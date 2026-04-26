@@ -64,6 +64,7 @@ function Content({ isDarkMode }: { isDarkMode: boolean }) {
                 gap: theme.padding.innerMedium,
             }}
         >
+            <p style={{ textIndent: theme.font.medium }}>A collection of web demonstration of web projects or multiplatform projects that support web.</p>
             {projectDataList.map((data) => (
                 <ProjectItem key={ data.id } isDarkMode={ isDarkMode } { ...data } />
             ))}

@@ -23,12 +23,16 @@ export const GlobalStyle = createGlobalStyle`
         font-style: normal;
     }
 
-    body {
+    html, body {
         margin: 0;
         padding: 0;
-        
-        background-color: ${props => props.theme.color.background};
-        color: ${props => props.theme.color.onBackground};
+        width: 100%;
+        height: 100%;
+    }
+    
+    body {
+        background-color: ${props => props.theme.color.backgroundContainer};
+        color: ${props => props.theme.color.onBackgroundContainer};
         
         font-family: "D2Coding", monospace;
         font-size: ${props => props.theme.font.medium};
