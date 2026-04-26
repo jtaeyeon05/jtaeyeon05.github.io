@@ -48,10 +48,9 @@ export const GlobalStyle = createGlobalStyle`
     
     a {
         color: ${props => props.theme.color.url};
-        text-decoration: none;
+        text-decoration: underline;
         
         &:visited { color: ${props => props.theme.color.urlVisited}; }
-        &:hover { text-decoration: underline; }
     }
     
     button {

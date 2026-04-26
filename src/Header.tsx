@@ -1,6 +1,6 @@
 import styled, { useTheme } from "styled-components";
 
-function Header({ isDarkMode, onDarkModeChanged }: { isDarkMode: boolean, onDarkModeChanged: (isDarkMode: boolean) => void }) {
+function Header({ onDarkModeChanged }: { onDarkModeChanged: (isDarkMode: boolean) => void }) {
     const theme = useTheme();
 
     const ThemeSvg = styled.svg`
@@ -35,12 +35,12 @@ function Header({ isDarkMode, onDarkModeChanged }: { isDarkMode: boolean, onDark
                 jtaeyeon05.github.io
             </p>
             <div style={{ flex: 1, minWidth: theme.padding.medium, }}/>
-            {isDarkMode ? (
+            {theme.color.isDarkMode ? (
                 <ThemeSvg
                     viewBox="0 0 16 16"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    onClick={ () => onDarkModeChanged(!isDarkMode) }
+                    onClick={ () => onDarkModeChanged(!theme.color.isDarkMode) }
                 >
                     <path opacity="255" d="M11 1H13V2H14V3H15V5H16V11H15V13H14V14H13V15H11V16H5V15H3V14H2V13H1V11H0V8H1V10H2V11H3V12H5V13H8V12H10V11H11V10H12V8H13V5H12V3H11V2H10V1H8V0H11V1Z" fill="currentColor"/>
                 </ThemeSvg>
@@ -49,7 +49,7 @@ function Header({ isDarkMode, onDarkModeChanged }: { isDarkMode: boolean, onDark
                     viewBox="0 0 16 16"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    onClick={ () => onDarkModeChanged(!isDarkMode) }
+                    onClick={ () => onDarkModeChanged(!theme.color.isDarkMode) }
                 >
                     <path opacity="255" d="M9 2H7V0H9V2Z" fill="currentColor"/>
                     <path opacity="255" d="M2 3H1V2H2V1H3V2H4V3H3V4H2V3Z" fill="currentColor"/>

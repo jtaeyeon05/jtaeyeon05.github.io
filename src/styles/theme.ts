@@ -1,5 +1,7 @@
 // Theme Types
 interface ColorTheme {
+    isDarkMode: boolean,
+
     primary: string,
     onPrimary: string,
     onPrimaryDim: string,
@@ -26,6 +28,7 @@ interface FontTheme {
 }
 
 interface ComponentTheme {
+    gridMaxWidth: string,
     imageMedium: string,
     imageLarge: string,
 }
@@ -56,6 +59,7 @@ const commonTheme = {
         lineHeight: "1.25",
     },
     component: {
+        gridMaxWidth: "25.00em",
         imageMedium: "1.20rem",
         imageLarge: "2.40rem",
     },
@@ -72,6 +76,8 @@ const commonTheme = {
 
 export const lightTheme: Theme = {
     color: {
+        isDarkMode: false,
+
         primary: "#5b5891",
         onPrimary: "#ffffff",
         onPrimaryDim: "#d6d5e3",
@@ -96,6 +102,8 @@ export const lightTheme: Theme = {
 
 export const darkTheme: Theme = {
     color: {
+        isDarkMode: true,
+
         primary: "#c4c0ff",
         onPrimary: "#2c2960",
         onPrimaryDim: "#524e87",

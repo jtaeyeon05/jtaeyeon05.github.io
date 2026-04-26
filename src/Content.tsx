@@ -10,41 +10,64 @@ interface ProjectData {
     sourceUrl: string | null;
 }
 
-const GitHubIcon = styled.img`
-    align-self: center;
-    width: ${props => props.theme.component.imageMedium};
-    height: ${props => props.theme.component.imageMedium};
-                    
+const WebBox = styled.div`
+    text-decoration: none;
     cursor: pointer;
-                    
-    &:hover {filter: brightness(1.1); } 
+    &:hover { text-decoration: underline; filter: brightness(1.1); } 
     &:active { filter: brightness(0.9); }
 `;
 
-function ProjectItem({ isDarkMode, name, url, sourceUrl }: { isDarkMode: boolean } & ProjectData) {
+const GitHubIcon = styled.img`
+    cursor: pointer;
+    &:hover { filter: brightness(1.1); } 
+    &:active { filter: brightness(0.9); }
+`;
+
+function ProjectItem({ name, url, sourceUrl }: ProjectData) {
     const theme = useTheme();
+    const absoluteUrl = new URL(url, window.location.origin).href;
 
     return (
-        <div
+        <WebBox
+            onClick={ () => {} }
             style={{
                 display: "flex",
                 alignItems: "center",
+
+                width: `calc(100% - 2 * ${theme.padding.innerMedium})`,
+                padding: theme.padding.innerMedium,
+
+                backgroundColor: theme.color.backgroundContainer,
+                color: theme.color.onBackgroundContainer,
             }}
         >
-            <a href={ url }>{ name }</a>
-            <div style={{ width: theme.padding.innerSmall }}/>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                }}
+            >
+                <p>{ name }</p>
+                <p style={{ fontSize: theme.font.small }}>{ absoluteUrl }</p>
+            </div>
+            <div style={{ flex: 1, minWidth: theme.padding.innerSmall }}/>
             {sourceUrl && (
                 <GitHubIcon
-                    src={ isDarkMode ? icGitHubWhite : icGitHubBlack }
+                    src={ theme.color.isDarkMode ? icGitHubWhite : icGitHubBlack }
                     alt={ "GitHub" }
                     onClick={ () => window.open(sourceUrl, "_blank") }
+                    style={{
+                        alignSelf: "center",
+                        width: theme.component.imageMedium,
+                        height: theme.component.imageMedium,
+                    }}
                 />
             )}
-        </div>
+        </WebBox>
     );
 }
 
-function Content({ isDarkMode }: { isDarkMode: boolean }) {
+function Content() {
     const theme = useTheme();
     const projectDataList: ProjectData[] = [
         { id: 0, name: "kmp-mnist", url: "https://kmp-mnist.xodus.lol/", sourceUrl: "https://github.com/jtaeyeon05/kmp-mnist" },
@@ -61,13 +84,29 @@ function Content({ isDarkMode }: { isDarkMode: boolean }) {
             style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: theme.padding.innerMedium,
             }}
         >
-            <p style={{ textIndent: theme.font.medium }}>A collection of web demonstration of web projects or multiplatform projects that support web.</p>
-            {projectDataList.map((data) => (
-                <ProjectItem key={ data.id } isDarkMode={ isDarkMode } { ...data } />
-            ))}
+            <p style={{ textIndent: theme.font.medium }}>
+                A collection of web demonstration of web projects or multiplatform projects that support web.
+            </p>
+            <p style={{ textIndent: theme.font.medium }}>
+                You can find more of my projects on <a href={ "https://github.com/jtaeyeon05/" }>GitHub</a>.
+            </p>
+            <div style={{ height: theme.padding.innerLarge }}/>
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: `repeat(auto-fit, minmax(${theme.component.gridMaxWidth}, 1fr))`,
+                    justifyItems: "stretch",
+                    gap: theme.padding.innerLarge,
+
+                    width: "100%",
+                }}
+            >
+                {projectDataList.map((data) => (
+                    <ProjectItem key={ data.id } { ...data } />
+                ))}
+            </div>
         </div>
     )
 }

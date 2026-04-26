@@ -39,10 +39,7 @@ function App() {
     return (
         <ThemeProvider theme={ theme }>
             <GlobalStyle />
-            <Header
-                isDarkMode={ isDarkMode }
-                onDarkModeChanged={ isDarkMode => setDarkMode(isDarkMode) }
-            />
+            <Header onDarkModeChanged={ isDarkMode => setDarkMode(isDarkMode) }/>
             <main
                 style={{
                     flex: 1,
@@ -51,7 +48,7 @@ function App() {
                     color: theme.color.onBackground,
                 }}
             >
-                <Content isDarkMode={ isDarkMode }/>
+                <Content />
             </main>
             <Footer />
         </ThemeProvider>
