@@ -1,5 +1,4 @@
 import { useTheme } from "styled-components";
-import styled from "styled-components";
 import icGitHubBlack from "./assets/images/ic_github_black.svg";
 import icGitHubWhite from "./assets/images/ic_github_white.svg";
 
@@ -10,26 +9,15 @@ interface ProjectData {
     sourceUrl: string | null;
 }
 
-const WebBox = styled.div`
-    text-decoration: none;
-    cursor: pointer;
-    &:hover { text-decoration: underline; filter: brightness(1.1); } 
-    &:active { filter: brightness(0.9); }
-`;
-
-const GitHubIcon = styled.img`
-    cursor: pointer;
-    &:hover { filter: brightness(1.1); } 
-    &:active { filter: brightness(0.9); }
-`;
 
 function ProjectItem({ name, url, sourceUrl }: ProjectData) {
     const theme = useTheme();
     const absoluteUrl = new URL(url, window.location.origin).href;
 
     return (
-        <WebBox
-            onClick={ () => {} }
+        <div
+            className={ "clickable" }
+            onClick={ () => { window.open(url, "_blank") } }
             style={{
                 display: "flex",
                 alignItems: "center",
@@ -39,6 +27,7 @@ function ProjectItem({ name, url, sourceUrl }: ProjectData) {
 
                 backgroundColor: theme.color.backgroundContainer,
                 color: theme.color.onBackgroundContainer,
+                textDecoration: "none",
             }}
         >
             <div
@@ -48,13 +37,14 @@ function ProjectItem({ name, url, sourceUrl }: ProjectData) {
                 }}
             >
                 <p>{ name }</p>
-                <p style={{ fontSize: theme.font.small }}>{ absoluteUrl }</p>
+                <p style={{ fontSize: theme.font.small, color: theme.color.onBackgroundContainerDim }}>{ absoluteUrl }</p>
             </div>
             <div style={{ flex: 1, minWidth: theme.padding.innerSmall }}/>
             {sourceUrl && (
-                <GitHubIcon
+                <img
                     src={ theme.color.isDarkMode ? icGitHubWhite : icGitHubBlack }
                     alt={ "GitHub" }
+                    className={ "clickable" }
                     onClick={ () => window.open(sourceUrl, "_blank") }
                     style={{
                         alignSelf: "center",
@@ -63,7 +53,7 @@ function ProjectItem({ name, url, sourceUrl }: ProjectData) {
                     }}
                 />
             )}
-        </WebBox>
+        </div>
     );
 }
 

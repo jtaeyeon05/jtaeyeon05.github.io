@@ -68,4 +68,22 @@ export const GlobalStyle = createGlobalStyle`
         &:hover {filter: brightness(1.1); }
         &:active { filter: brightness(0.9); }
     }
+
+    .clickable {
+        cursor: pointer;
+        &:hover { filter: brightness(1.1); }
+        &:active { filter: brightness(0.9); }
+        
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+
+        -webkit-touch-callout: none;
+    }
 `;
