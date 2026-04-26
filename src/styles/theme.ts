@@ -22,6 +22,11 @@ interface FontTheme {
     small: string,
     medium: string,
     large: string,
+    lineHeight: string,
+}
+
+interface ComponentTheme {
+    image: string,
 }
 
 interface PaddingTheme {
@@ -37,24 +42,29 @@ interface PaddingTheme {
 export interface Theme {
     color: ColorTheme,
     font: FontTheme,
+    component: ComponentTheme,
     padding: PaddingTheme,
 }
 
 // Theme Constants
 const commonTheme = {
     font: {
-        small: "16px",
-        medium: "24px",
-        large: "32px",
+        small: "0.50rem",
+        medium: "1.00rem",
+        large: "1.50rem",
+        lineHeight: "1.25",
+    },
+    component: {
+        image: "2.40rem",
     },
     padding: {
-        none: "0px",
-        innerSmall: "8px",
-        innerMedium: "12px",
-        innerLarge: "16px",
-        small: "16px",
-        medium: "24px",
-        large: "32px",
+        none: "0.00rem",
+        innerSmall: "0.50rem",
+        innerMedium: "0.75rem",
+        innerLarge: "1.00rem",
+        small: "1.00rem",
+        medium: "1.50rem",
+        large: "2.00rem",
     },
 }
 
@@ -62,22 +72,23 @@ export const lightTheme: Theme = {
     color: {
         primary: "#5b5891",
         onPrimary: "#ffffff",
-        onPrimaryDim: "#7b79a7",
+        onPrimaryDim: "#d6d5e3",
         primaryContainer: "#e3dfff",
         onPrimaryContainer: "#434078",
-        onPrimaryContainerDim: "#c3bfe4",
+        onPrimaryContainerDim: "#6b6799",
 
         url: "#405f91",
         urlVisited: "#874b6c",
 
         background: "#fef7ff",
         onBackground: "#1b1b1f",
-        onBackgroundDim: "#d0cbd2",
+        onBackgroundDim: "#535257",
         backgroundContainer: "#f3edf7",
         onBackgroundContainer: "#1b1b1f",
-        onBackgroundContainerDim: "#c7c3cb",
+        onBackgroundContainerDim: "#514f55",
     },
     font: commonTheme.font,
+    component: commonTheme.component,
     padding: commonTheme.padding,
 };
 
@@ -85,21 +96,22 @@ export const darkTheme: Theme = {
     color: {
         primary: "#c4c0ff",
         onPrimary: "#2c2960",
-        onPrimaryDim: "#a5a1df",
+        onPrimaryDim: "#524e87",
         primaryContainer: "#434078",
         onPrimaryContainer: "#e3dfff",
-        onPrimaryContainerDim: "#635f93",
+        onPrimaryContainerDim: "#bbb7dd",
 
         url: "#aac7ff",
         urlVisited: "#fcb0d7",
 
         background: "#1b1b1f",
         onBackground: "#e3e1e6",
-        onBackgroundDim: "#434246",
+        onBackgroundDim: "#b1afb4",
         backgroundContainer: "#2b2930",
         onBackgroundContainer: "#e3e1e6",
-        onBackgroundContainerDim: "#4f4d54",
+        onBackgroundContainerDim: "#b5b3b8",
     },
     font: commonTheme.font,
+    component: commonTheme.component,
     padding: commonTheme.padding,
 };

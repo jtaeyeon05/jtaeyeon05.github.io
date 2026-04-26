@@ -32,6 +32,14 @@ export const GlobalStyle = createGlobalStyle`
         
         font-family: "D2Coding", monospace;
         font-size: ${props => props.theme.font.medium};
+        line-height: ${props => props.theme.font.lineHeight};
+        
+        #root {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
     }
     
     a {
