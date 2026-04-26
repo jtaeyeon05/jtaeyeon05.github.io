@@ -18,22 +18,20 @@ function Footer() {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    minWidth: theme.padding.medium,
-                    color: theme.color.onBackgroundContainerDim
+                    color: theme.color.onBackgroundContainerDim,
                 }}
             >
                 <p>jtaeyeon05.github.io</p>
                 <p>&copy; jtaeyeon05 | 2026 | email@xodus.lol</p>
             </div>
-            <div style={{ flex: 1 }}/>
+            <div style={{ flex: 1, minWidth: theme.padding.medium, }}/>
             <img
-                src={icApp}
-                alt={"App Icon"}
+                src={ icApp }
+                alt={ "App Icon" }
                 style={{
-                    display: "inline-block",
                     alignSelf: "flex-end",
-                    width: theme.component.image,
-                    height: theme.component.image,
+                    width: theme.component.imageLarge,
+                    height: theme.component.imageLarge,
                 }}
             />
         </footer>

@@ -37,7 +37,7 @@ function App() {
                     padding: theme.padding.medium,
                 }}
             >
-                <Content />
+                <Content isDarkMode={ isDarkMode }/>
             </main>
             <Footer />
         </ThemeProvider>

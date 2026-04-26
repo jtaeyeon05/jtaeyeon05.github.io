@@ -1,4 +1,7 @@
-// import {useTheme} from "styled-components";
+import { useTheme } from "styled-components";
+import styled from "styled-components";
+import icGitHubBlack from "./assets/images/ic_github_black.svg";
+import icGitHubWhite from "./assets/images/ic_github_white.svg";
 
 interface ProjectData {
     id: number,
@@ -7,19 +10,42 @@ interface ProjectData {
     sourceUrl: string | null;
 }
 
-function ProjectItem({ name, url, sourceUrl }: ProjectData) {
+const GitHubIcon = styled.img`
+    align-self: center;
+    width: ${props => props.theme.component.imageMedium};
+    height: ${props => props.theme.component.imageMedium};
+                    
+    cursor: pointer;
+                    
+    &:hover {filter: brightness(1.1); } 
+    &:active { filter: brightness(0.9); }
+`;
+
+function ProjectItem({ isDarkMode, name, url, sourceUrl }: { isDarkMode: boolean } & ProjectData) {
+    const theme = useTheme();
+
     return (
-        <p>
-            <a href={url}>{name}</a>
+        <div
+            style={{
+                display: "flex",
+                alignItems: "center",
+            }}
+        >
+            <a href={ url }>{ name }</a>
+            <div style={{ width: theme.padding.innerSmall }}/>
             {sourceUrl && (
-                <a href={sourceUrl} style={{ marginLeft: "8px" }}>link</a>
+                <GitHubIcon
+                    src={ isDarkMode ? icGitHubWhite : icGitHubBlack }
+                    alt={ "GitHub" }
+                    onClick={ () => window.open(sourceUrl, "_blank") }
+                />
             )}
-        </p>
+        </div>
     );
 }
 
-function Content() {
-    // const theme = useTheme();
+function Content({ isDarkMode }: { isDarkMode: boolean }) {
+    const theme = useTheme();
     const projectDataList: ProjectData[] = [
         { id: 0, name: "kmp-mnist", url: "https://kmp-mnist.xodus.lol/", sourceUrl: "https://github.com/jtaeyeon05/kmp-mnist" },
         { id: 1, name: "why-web", url: "https://why.xodus.lol/", sourceUrl: "https://github.com/jtaeyeon05/why-web" },
@@ -31,9 +57,15 @@ function Content() {
     ];
 
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: theme.padding.innerMedium,
+            }}
+        >
             {projectDataList.map((data) => (
-                <ProjectItem key={data.id} {...data} />
+                <ProjectItem key={ data.id } isDarkMode={ isDarkMode } { ...data } />
             ))}
         </div>
     )

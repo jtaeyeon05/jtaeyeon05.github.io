@@ -26,7 +26,8 @@ interface FontTheme {
 }
 
 interface ComponentTheme {
-    image: string,
+    imageMedium: string,
+    imageLarge: string,
 }
 
 interface PaddingTheme {
@@ -55,7 +56,8 @@ const commonTheme = {
         lineHeight: "1.25",
     },
     component: {
-        image: "2.40rem",
+        imageMedium: "1.20rem",
+        imageLarge: "2.40rem",
     },
     padding: {
         none: "0.00rem",
