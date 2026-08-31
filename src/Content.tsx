@@ -65,7 +65,7 @@ function Content() {
         { id: 2, name: "xodus.lol", url: "https://xodus.lol/", sourceUrl: "https://github.com/jtaeyeon05/xodus.lol" },
         { id: 3, name: "SpotlightPlayer", url: "/SpotlightPlayer/", sourceUrl: "https://github.com/jtaeyeon05/MiniProjects/tree/main/spotlight_player" },
         { id: 4, name: "flutter2048", url: "/flutter2048/", sourceUrl: "https://github.com/jtaeyeon05/MiniProjects/tree/main/flutter2048" },
-        { id: 5, name: "flutterLearn", url: "/SpotlightPlayer/", sourceUrl: null },
+        { id: 5, name: "flutterLearn", url: "/flutterLearn/", sourceUrl: null },
         { id: 6, name: "getCOOL", url: "/getCOOL/", sourceUrl: "https://github.com/jtaeyeon05/MiniProjects/tree/main/GetCOOL" },
     ];
 
